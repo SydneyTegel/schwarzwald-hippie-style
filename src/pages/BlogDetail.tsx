@@ -172,7 +172,7 @@ const BlogDetail = () => {
               {article.relatedProducts.map((name) => (
                 <Link
                   key={name}
-                  to="/#shop"
+                  to="/shop"
                   className="px-5 py-3 rounded-xl bg-card border border-border hover:border-primary text-foreground text-sm font-medium transition-colors"
                 >
                   {name} →
