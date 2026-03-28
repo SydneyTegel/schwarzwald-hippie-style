@@ -111,7 +111,7 @@ const ProductSection = () => {
           className="text-center mb-12"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium mb-3">
-            Neue Kollektion
+            {filters[0] === "Alle" ? "Neue Kollektion" : "New Collection"}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
             Nachhaltige Hoodies, T-Shirts & Sweater

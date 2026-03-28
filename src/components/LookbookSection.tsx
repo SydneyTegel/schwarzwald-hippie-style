@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import lookbook1 from "@/assets/lookbook-1.jpg";
+import { useI18n } from "@/i18n/I18nContext";
 import lookbook2 from "@/assets/lookbook-2.jpg";
 import lookbook3 from "@/assets/lookbook-3.jpg";
 import lookbook4 from "@/assets/lookbook-4.jpg";
