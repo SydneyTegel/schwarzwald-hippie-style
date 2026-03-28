@@ -157,7 +157,7 @@ const ProductSection = () => {
                 <div className="relative overflow-hidden rounded-lg bg-card mb-4">
                   <img
                     src={product.image}
-                    alt={product.name}
+                    alt={`${product.name} – nachhaltige Schwarzwald Streetwear aus Bio-Baumwolle`}
                     loading="lazy"
                     width={800}
                     height={1024}
