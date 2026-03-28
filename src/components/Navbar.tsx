@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Shop", to: "/shop" },
   { label: "Lookbook", to: "/lookbook" },
   { label: "Magazin", to: "/magazin" },
+  { label: "Crowdfunding", to: "/crowdfunding" },
   { label: "Über uns", to: "/ueber-uns" },
 ];
 
