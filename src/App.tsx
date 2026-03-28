@@ -27,6 +27,7 @@ const ScrollToTop = () => {
 };
 
 const App = () => (
+  <I18nProvider>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
