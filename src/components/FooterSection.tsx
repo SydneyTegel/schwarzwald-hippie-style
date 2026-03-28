@@ -18,7 +18,7 @@ const FooterSection = () => {
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
               <Instagram size={20} />
             </a>
-            <a href="mailto:hello@schwarzwaldjungfrau.de" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="mailto:grotesk@grotesk.de?subject=Schwarzwaldjungfrau.de" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               hello@schwarzwaldjungfrau.de
             </a>
           </div>
