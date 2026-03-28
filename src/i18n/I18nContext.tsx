@@ -124,6 +124,14 @@ const translations: Record<Lang, Record<string, string>> = {
     "newsletter.emailError": "Bitte gib eine gültige E-Mail-Adresse ein.",
     "newsletter.successToast": "Willkommen! Dein 10 %-Rabattcode kommt per E-Mail.",
 
+    // Products modal
+    "products.selectSize": "Bitte wähle eine Größe aus.",
+    "products.added": "Hinzugefügt",
+    "products.addedToast": "zum Warenkorb hinzugefügt.",
+    "products.images": "Bilder",
+    "crowd.emailError": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "crowd.thankYou": "Danke! Du wirst benachrichtigt, wenn die Kampagne live geht.",
+
     // Footer
     "footer.tagline": "Nachhaltige Streetwear aus dem Schwarzwald. © 2026",
   },
