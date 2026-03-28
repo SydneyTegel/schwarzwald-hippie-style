@@ -5,10 +5,10 @@ import lookbook3 from "@/assets/lookbook-3.jpg";
 import lookbook4 from "@/assets/lookbook-4.jpg";
 
 const images = [
-  { src: lookbook1, alt: "Schwarzwald Trail – Oversized Hoodie", span: "row-span-2" },
-  { src: lookbook2, alt: "Golden Hour am See – Hoodies", span: "col-span-2" },
-  { src: lookbook3, alt: "Lederhosenhoodie im Nebel", span: "row-span-2" },
-  { src: lookbook4, alt: "Waldhütte – Cropped Hoodie", span: "col-span-2" },
+  { src: lookbook1, alt: "Dirndelhoodie Grün & Spitze – Schwarzwald Trail", span: "row-span-2" },
+  { src: lookbook2, alt: "Dirndelhoodie Pink & Lederhosenhoodie – Golden Hour am See", span: "col-span-2" },
+  { src: lookbook3, alt: "Lederhosenhoodie Herren – Nebelwald", span: "row-span-2" },
+  { src: lookbook4, alt: "Dirndelhoodie V-Neck – Waldhütte", span: "col-span-2" },
 ];
 
 const LookbookSection = () => {
