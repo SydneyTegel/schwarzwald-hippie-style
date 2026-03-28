@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import logoIcon from "@/assets/logo-icon-clean.png";
 
 const navLinks = [
   { label: "Shop", to: "/shop" },
@@ -17,7 +18,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container flex items-center justify-between h-16">
-        <Link to="/" className="font-heading text-xl font-bold tracking-tight text-foreground">
+        <Link to="/" className="flex items-center gap-2 font-heading text-xl font-bold tracking-tight text-foreground">
+          <img src={logoIcon} alt="Schwarzwaldjungfrau Logo" width={28} height={28} className="w-7 h-7" />
           SCHWARZWALD<span className="text-primary">JUNGFRAU</span>
         </Link>
 
