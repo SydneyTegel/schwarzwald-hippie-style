@@ -8,9 +8,11 @@ interface ProductGalleryModalProps {
   productName: string;
   price: string;
   images: string[];
+  description?: string;
+  material?: string;
 }
 
-const ProductGalleryModal = ({ isOpen, onClose, productName, price, images }: ProductGalleryModalProps) => {
+const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, description, material }: ProductGalleryModalProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -33,7 +35,7 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images }: Pr
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row bg-card rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row bg-card rounded-2xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -93,13 +95,26 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images }: Pr
               )}
             </div>
 
-            {/* Thumbnails sidebar */}
-            <div className="md:w-64 p-5 flex flex-col">
+            {/* Info sidebar */}
+            <div className="md:w-80 p-6 flex flex-col overflow-y-auto max-h-[40vh] md:max-h-none">
               <h3 className="font-heading text-xl font-bold text-foreground mb-1">{productName}</h3>
-              <span className="text-amber font-medium text-lg mb-5">{price}</span>
+              <span className="text-amber font-medium text-lg mb-4">{price}</span>
+
+              {description && (
+                <div className="mb-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                </div>
+              )}
+
+              {material && (
+                <div className="mb-5 p-3 rounded-lg bg-secondary/50 border border-border">
+                  <p className="text-xs uppercase tracking-widest text-primary font-medium mb-1.5">Material</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{material}</p>
+                </div>
+              )}
 
               {images.length > 1 && (
-                <div className="grid grid-cols-3 md:grid-cols-2 gap-2 mt-auto">
+                <div className="grid grid-cols-3 md:grid-cols-2 gap-2 mt-auto pt-4 border-t border-border">
                   {images.map((img, i) => (
                     <button
                       key={i}
