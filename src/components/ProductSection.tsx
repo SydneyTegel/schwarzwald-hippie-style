@@ -4,11 +4,13 @@ import tshirtImg from "@/assets/product-tshirt.jpg";
 import sweaterImg from "@/assets/product-sweater.jpg";
 import dirndelhoodieImg from "@/assets/product-dirndelhoodie.jpg";
 import dirndelhoodieVneckImg from "@/assets/product-dirndelhoodie-vneck.jpg";
+import lederhosenhoodieImg from "@/assets/product-lederhosenhoodie.jpg";
 
 const products = [
   { name: "Forest Hoodie", price: "89 €", category: "Hoodies", image: hoodieImg },
   { name: "Dirndelhoodie", price: "109 €", category: "Hoodies", image: dirndelhoodieImg },
   { name: "Dirndelhoodie V-Neck", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg },
+  { name: "Lederhosenhoodie", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg },
   { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg },
   { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg },
 ];
