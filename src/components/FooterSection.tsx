@@ -59,7 +59,8 @@ const FooterSection = () => {
         {/* Footer Links */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <Link to="/" className="font-heading text-lg font-bold text-foreground">
+            <Link to="/" className="flex items-center gap-2 font-heading text-lg font-bold text-foreground">
+              <img src={logoIcon} alt="Schwarzwaldjungfrau Logo" width={24} height={24} className="w-6 h-6" loading="lazy" />
               SCHWARZWALD<span className="text-primary">JUNGFRAU</span>
             </Link>
             <p className="text-muted-foreground text-sm mt-1">
