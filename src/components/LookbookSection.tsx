@@ -37,10 +37,10 @@ const LookbookSection = () => {
           className="text-center mb-12"
         >
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Lookbook – Urban Streetwear trifft Schwarzwald
+            {t("lookbook.title")}
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Nachhaltige Mode zwischen Schwarzwald-Natur und urbanem City-Style in Stuttgart, Berlin & Köln.
+            {t("lookbook.subtitle")}
           </p>
         </motion.div>
 
