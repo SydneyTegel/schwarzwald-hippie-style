@@ -34,6 +34,11 @@ const products = [
   { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg },
   { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg },
   { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg },
+  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img },
+  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img },
+  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img },
+  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img },
+  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img },
   { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg },
 ];
 
