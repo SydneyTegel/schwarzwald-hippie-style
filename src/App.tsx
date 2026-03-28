@@ -14,7 +14,6 @@ import BlogDetail from "./pages/BlogDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CrowdfundingPage from "./pages/CrowdfundingPage.tsx";
 import NewsletterPopup from "./components/NewsletterPopup.tsx";
-import LogoTestPage from "./pages/LogoTestPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -42,7 +41,7 @@ const App = () => (
           <Route path="/ueber-uns" element={<UeberUnsPage />} />
           <Route path="/crowdfunding" element={<CrowdfundingPage />} />
           <Route path="/magazin/:slug" element={<BlogDetail />} />
-          <Route path="/logo-test" element={<LogoTestPage />} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
