@@ -1,24 +1,26 @@
 import { motion } from "framer-motion";
 import { TreePine, Leaf, Mountain, Heart, Recycle, Users, MapPin, Sparkles } from "lucide-react";
-
-const values = [
-  { icon: TreePine, title: "Verwurzelt", desc: "Inspiriert von den dunklen Wäldern des Schwarzwalds – jedes Stück erzählt eine Geschichte von Natur und Tradition." },
-  { icon: Leaf, title: "Nachhaltig", desc: "GOTS-zertifizierte Bio-Baumwolle, faire Löhne, kurze Lieferwege. Wir produzieren ausschließlich in Europa." },
-  { icon: Mountain, title: "Grenzenlos", desc: "Streetwear ohne Grenzen – vom Wald in die Stadt. Unsere Designs verbinden Tracht mit urbanem Zeitgeist." },
-];
-
-const milestones = [
-  { year: "2023", text: "Die Idee entsteht – auf einer Wanderung durch den Nordschwarzwald." },
-  { year: "2024", text: "Erste Prototypen: Dirndelhoodie & Forest Hoodie entstehen in Handarbeit." },
-  { year: "2025", text: "Launch der ersten Kollektion mit 6 Pieces. Crowdfunding startet." },
-  { year: "2026", text: "Produktion in einer familiengeführten Manufaktur im Schwarzwald." },
-];
+import { useI18n } from "@/i18n/I18nContext";
 
 const AboutSection = () => {
+  const { t } = useI18n();
+
+  const values = [
+    { icon: TreePine, title: t("about.values.rooted"), desc: t("about.values.rooted.desc") },
+    { icon: Leaf, title: t("about.values.sustainable"), desc: t("about.values.sustainable.desc") },
+    { icon: Mountain, title: t("about.values.limitless"), desc: t("about.values.limitless.desc") },
+  ];
+
+  const milestones = [
+    { year: "2023", text: t("about.timeline.2023") },
+    { year: "2024", text: t("about.timeline.2024") },
+    { year: "2025", text: t("about.timeline.2025") },
+    { year: "2026", text: t("about.timeline.2026") },
+  ];
+
   return (
     <section id="über uns" className="py-24">
       <div className="container px-4">
-        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,20 +28,16 @@ const AboutSection = () => {
           className="text-center mb-20"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium mb-3">
-            Wer wir sind
+            {t("about.tag")}
           </p>
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Nachhaltige Mode aus dem Schwarzwald
+            {t("about.title")}
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-            Schwarzwaldjungfrau ist mehr als ein Label – es ist ein Lebensgefühl.
-            Wir verbinden urbane Streetwear mit der rauen Schönheit des Schwarzwalds.
-            Jedes Kleidungsstück wird fair und nachhaltig produziert, aus GOTS-zertifizierter
-            Bio-Baumwolle, in einer familiengeführten Manufaktur mitten im Schwarzwald.
+            {t("about.intro")}
           </p>
         </motion.div>
 
-        {/* Mission Statement */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -49,23 +47,17 @@ const AboutSection = () => {
           <Sparkles className="absolute top-6 right-6 text-accent/40" size={24} />
           <div className="max-w-3xl">
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Unsere Mission
+              {t("about.mission.title")}
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed mb-4">
-              Mode sollte keine Kompromisse verlangen – weder beim Style noch bei der Verantwortung.
-              Wir glauben, dass nachhaltige Kleidung genauso bold, urban und selbstbewusst sein kann
-              wie Fast Fashion – nur eben ohne den ökologischen Fußabdruck.
+              {t("about.mission.p1")}
             </p>
             <p className="text-muted-foreground text-base leading-relaxed">
-              Unsere Designs entstehen dort, wo der Schwarzwald am dichtesten ist. Wir lassen uns
-              von Moos, Nebel und alten Tannen inspirieren – und übersetzen das in Pieces, die auf
-              den Straßen von Stuttgart, Berlin und Köln getragen werden. Tracht trifft Streetwear.
-              Natur trifft Stadt. Tradition trifft Zukunft.
+              {t("about.mission.p2")}
             </p>
           </div>
         </motion.div>
 
-        {/* Values Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {values.map((item, i) => (
             <motion.div
@@ -85,7 +77,6 @@ const AboutSection = () => {
           ))}
         </div>
 
-        {/* Detailed Story */}
         <div className="grid md:grid-cols-2 gap-16 mb-24 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -93,26 +84,12 @@ const AboutSection = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Vom Wanderweg zum Laufsteg
+              {t("about.story.title")}
             </h2>
             <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
-              <p>
-                Alles begann mit einer einfachen Frage: Warum gibt es keine Mode, die den
-                Schwarzwald feiert – ohne kitschig zu sein? Keine Hirschgeweihe auf Filz,
-                keine Kuckucksuhren-Prints. Sondern echte, tragbare Streetwear, die die
-                DNA des Waldes in sich trägt.
-              </p>
-              <p>
-                Unsere Gründerin wuchs zwischen Tannen und Schluchten auf, studierte Design
-                in der Stadt und vermisste dort immer eines: das Gefühl von Wald. Die Stille.
-                Das Moos unter den Füßen. Den Nebel am Morgen. Schwarzwaldjungfrau ist der
-                Versuch, dieses Gefühl in Kleidung zu übersetzen.
-              </p>
-              <p>
-                Jedes Stück wird in kleinen Auflagen gefertigt – kein Massenprodukt, sondern
-                ein Statement. Wir arbeiten mit lokalen Handwerkern, nutzen recycelte
-                Verpackungen und pflanzen für jede verkaufte Kollektion Bäume im Schwarzwald.
-              </p>
+              <p>{t("about.story.p1")}</p>
+              <p>{t("about.story.p2")}</p>
+              <p>{t("about.story.p3")}</p>
             </div>
           </motion.div>
 
@@ -126,28 +103,27 @@ const AboutSection = () => {
               <div className="p-6 rounded-2xl bg-card border border-border text-center">
                 <Recycle className="mx-auto text-primary mb-3" size={24} />
                 <p className="text-2xl font-bold text-foreground">100%</p>
-                <p className="text-xs text-muted-foreground mt-1">Bio-Baumwolle</p>
+                <p className="text-xs text-muted-foreground mt-1">{t("about.stats.organic")}</p>
               </div>
               <div className="p-6 rounded-2xl bg-card border border-border text-center">
                 <MapPin className="mx-auto text-primary mb-3" size={24} />
                 <p className="text-2xl font-bold text-foreground">EU</p>
-                <p className="text-xs text-muted-foreground mt-1">Produktion</p>
+                <p className="text-xs text-muted-foreground mt-1">{t("about.stats.production")}</p>
               </div>
               <div className="p-6 rounded-2xl bg-card border border-border text-center">
                 <Heart className="mx-auto text-primary mb-3" size={24} />
                 <p className="text-2xl font-bold text-foreground">Fair</p>
-                <p className="text-xs text-muted-foreground mt-1">Löhne & Bedingungen</p>
+                <p className="text-xs text-muted-foreground mt-1">{t("about.stats.fair")}</p>
               </div>
               <div className="p-6 rounded-2xl bg-card border border-border text-center">
                 <Users className="mx-auto text-primary mb-3" size={24} />
                 <p className="text-2xl font-bold text-foreground">Klein</p>
-                <p className="text-xs text-muted-foreground mt-1">Auflagen, kein Fast Fashion</p>
+                <p className="text-xs text-muted-foreground mt-1">{t("about.stats.small")}</p>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Timeline */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -155,7 +131,7 @@ const AboutSection = () => {
           className="mb-8"
         >
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground text-center mb-12">
-            Unsere Reise
+            {t("about.timeline.title")}
           </h2>
           <div className="max-w-2xl mx-auto">
             {milestones.map((m, i) => (

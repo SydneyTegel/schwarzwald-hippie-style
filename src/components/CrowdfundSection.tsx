@@ -2,43 +2,45 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Rocket, TreePine, Heart, Star, Users, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
+import { useI18n } from "@/i18n/I18nContext";
 
 const GOAL = 25000;
 const RAISED = 8750;
 const BACKERS = 47;
 const DAYS_LEFT = 23;
 
-const tiers = [
-  {
-    name: "Waldfreund",
-    price: 25,
-    icon: TreePine,
-    description: "Dein Name auf unserer Unterstützer-Wand + exklusiver Sticker-Set.",
-    claimed: 34,
-    limit: 100,
-  },
-  {
-    name: "Trailblazer",
-    price: 89,
-    icon: Star,
-    description: "Ein Schwarzwaldjungfrau T-Shirt deiner Wahl + alle Rewards aus Waldfreund.",
-    claimed: 12,
-    limit: 50,
-    popular: true,
-  },
-  {
-    name: "Gipfelstürmer",
-    price: 179,
-    icon: Rocket,
-    description: "Exklusiver limitierter Hoodie + Naming im ersten Lookbook + alle vorherigen Rewards.",
-    claimed: 1,
-    limit: 20,
-  },
-];
-
 const CrowdfundSection = () => {
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [email, setEmail] = useState("");
+  const { t } = useI18n();
+
+  const tiers = [
+    {
+      name: t("crowd.tier.waldfreund"),
+      price: 25,
+      icon: TreePine,
+      description: t("crowd.tier.waldfreund.desc"),
+      claimed: 34,
+      limit: 100,
+    },
+    {
+      name: t("crowd.tier.trailblazer"),
+      price: 89,
+      icon: Star,
+      description: t("crowd.tier.trailblazer.desc"),
+      claimed: 12,
+      limit: 50,
+      popular: true,
+    },
+    {
+      name: t("crowd.tier.gipfel"),
+      price: 179,
+      icon: Rocket,
+      description: t("crowd.tier.gipfel.desc"),
+      claimed: 1,
+      limit: 20,
+    },
+  ];
 
   const progress = (RAISED / GOAL) * 100;
 
@@ -49,10 +51,10 @@ const CrowdfundSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast.error("Bitte gib eine gültige E-Mail-Adresse ein.");
+      toast.error(t("crowd.emailError"));
       return;
     }
-    toast.success(`Danke! Du wirst benachrichtigt, wenn "${selectedTier}" live geht.`);
+    toast.success(t("crowd.thankYou"));
     setSelectedTier(null);
     setEmail("");
   };
@@ -60,7 +62,6 @@ const CrowdfundSection = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-background to-card/50">
       <div className="container px-4">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,19 +69,16 @@ const CrowdfundSection = () => {
           className="text-center mb-16"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-accent font-medium mb-3">
-            Crowdfunding
+            {t("crowd.tag")}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Werde Teil der Bewegung
+            {t("crowd.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-            Hilf uns, nachhaltige Schwarzwald-Streetwear in die Welt zu bringen.
-            Mit deiner Unterstützung finanzieren wir die erste große Produktion –
-            fair, lokal und ohne Kompromisse.
+            {t("crowd.subtitle")}
           </p>
         </motion.div>
 
-        {/* Progress Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,20 +91,19 @@ const CrowdfundSection = () => {
                 €{RAISED.toLocaleString("de-DE")}
               </p>
               <p className="text-muted-foreground text-sm">
-                von €{GOAL.toLocaleString("de-DE")} Ziel
+                {t("crowd.of")} €{GOAL.toLocaleString("de-DE")} {t("crowd.goal")}
               </p>
             </div>
             <div className="text-center">
               <p className="text-2xl font-bold text-foreground">{BACKERS}</p>
-              <p className="text-muted-foreground text-sm">Unterstützer</p>
+              <p className="text-muted-foreground text-sm">{t("crowd.backers")}</p>
             </div>
             <div className="text-center">
               <p className="text-2xl font-bold text-accent">{DAYS_LEFT}</p>
-              <p className="text-muted-foreground text-sm">Tage übrig</p>
+              <p className="text-muted-foreground text-sm">{t("crowd.daysLeft")}</p>
             </div>
           </div>
 
-          {/* Progress Bar */}
           <div className="relative h-4 bg-muted rounded-full overflow-hidden mb-3">
             <motion.div
               initial={{ width: 0 }}
@@ -117,11 +114,10 @@ const CrowdfundSection = () => {
             />
           </div>
           <p className="text-sm text-muted-foreground text-right">
-            {Math.round(progress)}% erreicht
+            {Math.round(progress)}% {t("crowd.reached")}
           </p>
         </motion.div>
 
-        {/* Tiers */}
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
           {tiers.map((tier, i) => (
             <motion.div
@@ -139,7 +135,7 @@ const CrowdfundSection = () => {
             >
               {tier.popular && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-semibold bg-primary text-primary-foreground px-3 py-1 rounded-full">
-                  Beliebteste Wahl
+                  {t("crowd.popular")}
                 </span>
               )}
 
@@ -158,9 +154,9 @@ const CrowdfundSection = () => {
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span className="flex items-center gap-1">
                   <Users size={12} />
-                  {tier.claimed} von {tier.limit}
+                  {tier.claimed} {t("crowd.of")} {tier.limit}
                 </span>
-                <span>{tier.limit - tier.claimed} übrig</span>
+                <span>{tier.limit - tier.claimed} {t("crowd.remaining")}</span>
               </div>
 
               <div className="h-1.5 bg-muted rounded-full mt-2 overflow-hidden">
@@ -173,7 +169,6 @@ const CrowdfundSection = () => {
           ))}
         </div>
 
-        {/* Pledge Form */}
         {selectedTier && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -182,15 +177,15 @@ const CrowdfundSection = () => {
           >
             <CheckCircle className="mx-auto text-primary mb-3" size={32} />
             <h3 className="font-heading text-lg font-bold text-foreground mb-2">
-              „{selectedTier}" ausgewählt
+              „{selectedTier}" {t("crowd.selected")}
             </h3>
             <p className="text-muted-foreground text-sm mb-5">
-              Hinterlasse deine E-Mail – wir benachrichtigen dich, sobald die Kampagne live geht.
+              {t("crowd.emailPrompt")}
             </p>
             <form onSubmit={handleSubmit} className="flex gap-2">
               <input
                 type="email"
-                placeholder="deine@email.de"
+                placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-4 py-2.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
@@ -199,13 +194,12 @@ const CrowdfundSection = () => {
                 type="submit"
                 className="px-5 py-2.5 bg-primary text-primary-foreground rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
               >
-                Sichern
+                {t("crowd.secure")}
               </button>
             </form>
           </motion.div>
         )}
 
-        {/* Why Support */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -213,25 +207,25 @@ const CrowdfundSection = () => {
           className="max-w-3xl mx-auto mt-20 text-center"
         >
           <h3 className="font-heading text-xl font-bold text-foreground mb-6">
-            Warum unterstützen?
+            {t("crowd.why")}
           </h3>
           <div className="grid sm:grid-cols-3 gap-6 text-sm">
             <div className="flex flex-col items-center gap-2">
               <Heart className="text-primary" size={20} />
               <p className="text-muted-foreground">
-                <span className="text-foreground font-medium">Fair & lokal.</span> Jeder Euro fließt in faire Produktion im Schwarzwald.
+                <span className="text-foreground font-medium">{t("crowd.why.fair")}</span> {t("crowd.why.fair.desc")}
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <TreePine className="text-primary" size={20} />
               <p className="text-muted-foreground">
-                <span className="text-foreground font-medium">Bäume pflanzen.</span> Für jede Pledge pflanzen wir einen Baum im Schwarzwald.
+                <span className="text-foreground font-medium">{t("crowd.why.trees")}</span> {t("crowd.why.trees.desc")}
               </p>
             </div>
             <div className="flex flex-col items-center gap-2">
               <Star className="text-primary" size={20} />
               <p className="text-muted-foreground">
-                <span className="text-foreground font-medium">Exklusiv.</span> Early-Supporter erhalten limitierte Designs, die nie wieder produziert werden.
+                <span className="text-foreground font-medium">{t("crowd.why.exclusive")}</span> {t("crowd.why.exclusive.desc")}
               </p>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ShoppingBag, Check } from "lucide-react";
 import { toast } from "sonner";
+import { useI18n } from "@/i18n/I18nContext";
 
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"] as const;
 
@@ -19,17 +20,18 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, desc
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [added, setAdded] = useState(false);
+  const { t } = useI18n();
 
   const goNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      toast.error("Bitte wähle eine Größe aus.");
+      toast.error(t("products.selectSize"));
       return;
     }
     setAdded(true);
-    toast.success(`${productName} (${selectedSize}) zum Warenkorb hinzugefügt.`);
+    toast.success(`${productName} (${selectedSize}) ${t("products.addedToast")}`);
     setTimeout(() => setAdded(false), 2000);
   };
 
@@ -50,53 +52,51 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, desc
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row bg-card rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/60 backdrop-blur-sm text-foreground hover:bg-background/80 transition-colors"
+              className="absolute top-4 right-4 z-10 text-muted-foreground hover:text-foreground transition-colors bg-background/50 backdrop-blur-sm rounded-full p-1.5"
+              aria-label="Close"
             >
-              <X className="w-5 h-5" />
+              <X size={20} />
             </button>
 
             {/* Image area */}
-            <div className="relative flex-1 min-h-[300px] md:min-h-[500px] bg-secondary/30">
+            <div className="relative flex-1 bg-secondary/30 flex items-center justify-center min-h-[300px] md:min-h-[500px]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentIndex}
                   src={images[currentIndex]}
-                  alt={`${productName} - Bild ${currentIndex + 1}`}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
+                  alt={productName}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className="w-full h-full object-cover"
                 />
               </AnimatePresence>
 
-              {/* Nav arrows */}
               {images.length > 1 && (
                 <>
                   <button
                     onClick={goPrev}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/60 backdrop-blur-sm text-foreground hover:bg-background/80 transition-colors"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-sm text-foreground rounded-full p-2 hover:bg-background/90 transition-colors"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft size={20} />
                   </button>
                   <button
                     onClick={goNext}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/60 backdrop-blur-sm text-foreground hover:bg-background/80 transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-sm text-foreground rounded-full p-2 hover:bg-background/90 transition-colors"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight size={20} />
                   </button>
                 </>
               )}
 
-              {/* Dots */}
               {images.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
                   {images.map((_, i) => (
                     <button
                       key={i}
@@ -121,14 +121,14 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, desc
 
               {material && (
                 <div className="mb-5 p-3 rounded-lg bg-secondary/50 border border-border">
-                  <p className="text-xs uppercase tracking-widest text-primary font-medium mb-1.5">Material</p>
+                  <p className="text-xs uppercase tracking-widest text-primary font-medium mb-1.5">{t("products.material")}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{material}</p>
                 </div>
               )}
 
               {/* Size selector */}
               <div className="mb-5">
-                <p className="text-xs uppercase tracking-widest text-primary font-medium mb-2">Größe</p>
+                <p className="text-xs uppercase tracking-widest text-primary font-medium mb-2">{t("products.sizes")}</p>
                 <div className="grid grid-cols-6 gap-1.5">
                   {sizes.map((size) => (
                     <button
@@ -158,12 +158,12 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, desc
                 {added ? (
                   <>
                     <Check className="w-4 h-4" />
-                    Hinzugefügt
+                    {t("products.added")}
                   </>
                 ) : (
                   <>
                     <ShoppingBag className="w-4 h-4" />
-                    In den Warenkorb
+                    {t("products.addToCart")}
                   </>
                 )}
               </button>

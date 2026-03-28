@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { articles } from "@/data/articles";
+import { useI18n } from "@/i18n/I18nContext";
 
 const BlogSection = () => {
+  const { t } = useI18n();
   return (
     <section id="magazin" className="py-24">
       <div className="container px-4">
@@ -14,13 +16,13 @@ const BlogSection = () => {
           className="text-center mb-14"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium mb-3">
-            Magazin
+            {t("blog.tag")}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Wald, Mode & Nachhaltigkeit
+            {t("blog.title")}
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Geschichten rund um Schwarzwald-Streetwear, faire Produktion und den Style zwischen Natur und Großstadt.
+            {t("blog.subtitle")}
           </p>
         </motion.div>
 
@@ -59,7 +61,7 @@ const BlogSection = () => {
                   {articles[0].excerpt}
                 </p>
                 <span className="inline-flex items-center gap-2 text-primary font-medium text-sm uppercase tracking-wider group-hover:gap-3 transition-all">
-                  Weiterlesen <ArrowRight size={16} />
+                  {t("blog.readMore")} <ArrowRight size={16} />
                 </span>
               </div>
             </div>
