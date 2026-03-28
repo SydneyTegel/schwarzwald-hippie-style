@@ -114,7 +114,7 @@ const ProductSection = () => {
             Neue Kollektion
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
-            Unsere Pieces
+            Nachhaltige Hoodies, T-Shirts & Sweater
           </h2>
         </motion.div>
 
