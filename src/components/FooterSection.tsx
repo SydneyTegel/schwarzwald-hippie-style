@@ -21,6 +21,41 @@ const FooterSection = () => {
   return (
     <footer className="py-16 border-t border-border">
       <div className="container px-4">
+        {/* Newsletter Section */}
+        <div className="mb-12 pb-10 border-b border-border text-center">
+          <div className="max-w-lg mx-auto">
+            <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+              10 % auf deine erste Bestellung
+            </h3>
+            <p className="text-muted-foreground text-sm mb-5">
+              Melde dich an und erhalte exklusive Angebote, Style-Tipps und News aus dem Schwarzwald.
+            </p>
+            {!subscribed ? (
+              <form onSubmit={handleNewsletterSubmit} className="flex gap-2 max-w-sm mx-auto">
+                <div className="relative flex-1">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} />
+                  <input
+                    type="email"
+                    placeholder="deine@email.de"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2.5 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors flex items-center gap-1.5"
+                >
+                  Anmelden <ArrowRight size={14} />
+                </button>
+              </form>
+            ) : (
+              <p className="text-primary font-semibold text-sm">🎉 Willkommen! Dein Rabattcode ist unterwegs.</p>
+            )}
+          </div>
+        </div>
+
+        {/* Footer Links */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <Link to="/" className="font-heading text-lg font-bold text-foreground">
