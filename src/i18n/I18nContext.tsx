@@ -234,6 +234,13 @@ const translations: Record<Lang, Record<string, string>> = {
     "newsletter.emailError": "Please enter a valid email address.",
     "newsletter.successToast": "Welcome! Your 10% discount code is on its way.",
 
+    "products.selectSize": "Please select a size.",
+    "products.added": "Added",
+    "products.addedToast": "added to cart.",
+    "products.images": "images",
+    "crowd.emailError": "Please enter a valid email address.",
+    "crowd.thankYou": "Thanks! We'll notify you when the campaign goes live.",
+
     "footer.tagline": "Sustainable streetwear from the Black Forest. © 2026",
   },
 
