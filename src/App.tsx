@@ -14,7 +14,6 @@ import BlogDetail from "./pages/BlogDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CrowdfundingPage from "./pages/CrowdfundingPage.tsx";
 import NewsletterPopup from "./components/NewsletterPopup.tsx";
-import LogoTestPage from "./pages/LogoTestPage.tsx";
 
 const queryClient = new QueryClient();
 
