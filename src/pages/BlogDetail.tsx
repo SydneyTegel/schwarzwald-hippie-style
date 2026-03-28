@@ -130,7 +130,7 @@ const BlogDetail = () => {
           transition={{ duration: 0.6 }}
         >
           <Link
-            to="/#magazin"
+            to="/magazin"
             className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-6 hover:gap-3 transition-all"
           >
             <ArrowLeft size={16} /> Zurück zum Magazin
