@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import hoodieImg from "@/assets/product-hoodie.jpg";
 import tshirtImg from "@/assets/product-tshirt.jpg";
 import sweaterImg from "@/assets/product-sweater.jpg";
@@ -22,32 +23,42 @@ import tshirtWomen1Img from "@/assets/product-tshirt-women-1.jpg";
 import tshirtWomen2Img from "@/assets/product-tshirt-women-2.jpg";
 import tshirtWomen3Img from "@/assets/product-tshirt-women-3.jpg";
 
+type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts";
+
+const filters: FilterTag[] = ["Alle", "Damen", "Herren", "Dirndel", "Forest", "Lederhosen", "T-Shirts"];
+
 const products = [
-  { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg },
-  { name: "Forest Hoodie Herren", price: "89 €", category: "Hoodies", image: foresthoodieMenImg },
-  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg },
-  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg },
-  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg },
-  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg },
-  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg },
-  { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg },
-  { name: "Dirndelhoodie Pink Cropped", price: "109 €", category: "Hoodies", image: dirndelhoodiePinkCroppedImg },
-  { name: "Dirndelhoodie Pink Puffärmel", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkPuffImg },
-  { name: "Dirndelhoodie Pink Oversized", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkOversizedImg },
-  { name: "Dirndelhoodie Pink Schnürung", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkLaceupImg },
-  { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg },
-  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg },
-  { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg },
-  { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg },
-  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img },
-  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img },
-  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img },
-  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img },
-  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img },
-  { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg },
+  { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg, tags: ["Damen", "Forest"] },
+  { name: "Forest Hoodie Herren", price: "89 €", category: "Hoodies", image: foresthoodieMenImg, tags: ["Herren", "Forest"] },
+  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg, tags: ["Herren", "Forest"] },
+  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg, tags: ["Herren", "Forest"] },
+  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Pink Cropped", price: "109 €", category: "Hoodies", image: dirndelhoodiePinkCroppedImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Pink Puffärmel", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkPuffImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Pink Oversized", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkOversizedImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Pink Schnürung", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkLaceupImg, tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg, tags: ["Damen", "Dirndel"] },
+  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg, tags: ["Damen", "Lederhosen"] },
+  { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg, tags: ["Herren", "Lederhosen"] },
+  { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg, tags: ["Damen", "T-Shirts"] },
+  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img, tags: ["Herren", "T-Shirts"] },
+  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img, tags: ["Herren", "T-Shirts"] },
+  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, tags: ["Damen", "T-Shirts"] },
+  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img, tags: ["Damen", "T-Shirts"] },
+  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img, tags: ["Damen", "T-Shirts"] },
+  { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg, tags: ["Damen"] },
 ];
 
 const ProductSection = () => {
+  const [activeFilter, setActiveFilter] = useState<FilterTag>("Alle");
+
+  const filteredProducts = activeFilter === "Alle"
+    ? products
+    : products.filter((p) => p.tags.includes(activeFilter));
+
   return (
     <section id="shop" className="py-24 bg-secondary/30">
       <div className="container px-4">
@@ -55,7 +66,7 @@ const ProductSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium mb-3">
             Neue Kollektion
@@ -65,37 +76,63 @@ const ProductSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, i) => (
-            <motion.div
-              key={product.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="group cursor-pointer"
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-5 py-2 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-300 border ${
+                activeFilter === filter
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-transparent text-muted-foreground border-border hover:border-primary hover:text-foreground"
+              }`}
             >
-              <div className="relative overflow-hidden rounded-lg bg-card mb-4">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  loading="lazy"
-                  width={800}
-                  height={1024}
-                  className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-background/0 group-hover:bg-background/20 transition-colors duration-500" />
-                <span className="absolute top-4 left-4 text-xs uppercase tracking-widest text-primary bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                  {product.category}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <h3 className="font-heading font-semibold text-foreground">{product.name}</h3>
-                <span className="text-amber font-medium">{product.price}</span>
-              </div>
-            </motion.div>
+              {filter}
+              <span className="ml-1.5 text-xs opacity-60">
+                {filter === "Alle"
+                  ? products.length
+                  : products.filter((p) => p.tags.includes(filter)).length}
+              </span>
+            </button>
           ))}
         </div>
+
+        {/* Product Grid */}
+        <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((product) => (
+              <motion.div
+                key={product.name}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="group cursor-pointer"
+              >
+                <div className="relative overflow-hidden rounded-lg bg-card mb-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    width={800}
+                    height={1024}
+                    className="w-full aspect-[4/5] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/20 transition-colors duration-500" />
+                  <span className="absolute top-4 left-4 text-xs uppercase tracking-widest text-primary bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                    {product.category}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <h3 className="font-heading font-semibold text-foreground text-sm md:text-base">{product.name}</h3>
+                  <span className="text-amber font-medium whitespace-nowrap">{product.price}</span>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
