@@ -190,6 +190,8 @@ const ProductSection = () => {
         productName={selectedProduct?.name ?? ""}
         price={selectedProduct?.price ?? ""}
         images={selectedProduct?.images ?? []}
+        description={selectedProduct?.description}
+        material={selectedProduct?.material}
       />
     </section>
   );
