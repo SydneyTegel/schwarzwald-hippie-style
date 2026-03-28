@@ -39,6 +39,14 @@ import detailDirndelPinkCloseup from "@/assets/detail-dirndelhoodie-pink-closeup
 import detailDirndelPinkLifestyle from "@/assets/detail-dirndelhoodie-pink-lifestyle.jpg";
 import detailLederhosenMenCloseup from "@/assets/detail-lederhosenhoodie-men-closeup.jpg";
 import detailLederhosenMenLifestyle from "@/assets/detail-lederhosenhoodie-men-lifestyle.jpg";
+import detailDirndelGreenCloseup from "@/assets/detail-dirndelhoodie-green-closeup.jpg";
+import detailDirndelCloseup from "@/assets/detail-dirndelhoodie-closeup.jpg";
+import detailDirndelVneckCloseup from "@/assets/detail-dirndelhoodie-vneck-closeup.jpg";
+import detailLederhosenWomenCloseup from "@/assets/detail-lederhosenhoodie-women-closeup.jpg";
+import detailTshirtMenCloseup from "@/assets/detail-tshirt-men-closeup.jpg";
+import detailTshirtWomenCloseup from "@/assets/detail-tshirt-women-closeup.jpg";
+import detailSweaterWomenCloseup from "@/assets/detail-sweater-women-closeup.jpg";
+import detailSweaterMenCloseup from "@/assets/detail-sweater-men-closeup.jpg";
 
 type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts" | "Sweater";
 
