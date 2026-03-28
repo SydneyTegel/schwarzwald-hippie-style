@@ -342,6 +342,13 @@ const translations: Record<Lang, Record<string, string>> = {
     "newsletter.emailError": "请输入有效的电子邮件地址。",
     "newsletter.successToast": "欢迎！您的10%折扣码正在发送中。",
 
+    "products.selectSize": "请选择尺码。",
+    "products.added": "已添加",
+    "products.addedToast": "已加入购物车。",
+    "products.images": "张图片",
+    "crowd.emailError": "请输入有效的电子邮件地址。",
+    "crowd.thankYou": "谢谢！活动上线时我们会通知您。",
+
     "footer.tagline": "来自黑森林的可持续街头时尚 © 2026",
   },
 };
