@@ -12,6 +12,7 @@ import MagazinPage from "./pages/MagazinPage.tsx";
 import UeberUnsPage from "./pages/UeberUnsPage.tsx";
 import BlogDetail from "./pages/BlogDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import CrowdfundingPage from "./pages/CrowdfundingPage.tsx";
 import NewsletterPopup from "./components/NewsletterPopup.tsx";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/lookbook" element={<LookbookPage />} />
           <Route path="/magazin" element={<MagazinPage />} />
           <Route path="/ueber-uns" element={<UeberUnsPage />} />
+          <Route path="/crowdfunding" element={<CrowdfundingPage />} />
           <Route path="/magazin/:slug" element={<BlogDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
