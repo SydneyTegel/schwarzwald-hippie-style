@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import hoodieImg from "@/assets/product-hoodie.jpg";
 import tshirtImg from "@/assets/product-tshirt.jpg";
 import sweaterImg from "@/assets/product-sweater.jpg";
+import dirndelhoodieImg from "@/assets/product-dirndelhoodie.jpg";
 
 const products = [
   { name: "Forest Hoodie", price: "89 €", category: "Hoodies", image: hoodieImg },
+  { name: "Dirndelhoodie", price: "109 €", category: "Hoodies", image: dirndelhoodieImg },
   { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg },
   { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg },
 ];
