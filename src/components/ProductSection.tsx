@@ -23,10 +23,15 @@ import tshirtWomen1Img from "@/assets/product-tshirt-women-1.jpg";
 import tshirtWomen2Img from "@/assets/product-tshirt-women-2.jpg";
 import tshirtWomen3Img from "@/assets/product-tshirt-women-3.jpg";
 import tshirtPineTeeMenImg from "@/assets/product-tshirt-pinetee-men.jpg";
+import sweaterWomen1Img from "@/assets/product-sweater-women-1.jpg";
+import sweaterWomen2Img from "@/assets/product-sweater-women-2.jpg";
+import sweaterWomen3Img from "@/assets/product-sweater-women-3.jpg";
+import sweaterMen1Img from "@/assets/product-sweater-men-1.jpg";
+import sweaterMen2Img from "@/assets/product-sweater-men-2.jpg";
 
-type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts";
+type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts" | "Sweater";
 
-const filters: FilterTag[] = ["Alle", "Damen", "Herren", "Dirndel", "Forest", "Lederhosen", "T-Shirts"];
+const filters: FilterTag[] = ["Alle", "Damen", "Herren", "Dirndel", "Forest", "Lederhosen", "T-Shirts", "Sweater"];
 
 const products = [
   { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg, tags: ["Damen", "Forest"] },
