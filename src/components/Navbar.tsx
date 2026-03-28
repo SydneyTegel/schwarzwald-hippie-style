@@ -23,7 +23,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2.5">
-          <img src={logoIcon} alt="Schwarzwaldjungfrau Logo" width={56} height={56} className="w-14 h-14" />
+          <img src={logoIcon} alt="Schwarzwaldjungfrau Logo" width={112} height={112} className="w-28 h-28" />
           <div className="flex flex-col leading-none">
             <span className="font-heading text-sm font-bold tracking-tight text-foreground">SCHWARZWALD</span>
             <span className="font-heading text-sm font-bold tracking-tight text-primary">JUNGFRAU</span>
