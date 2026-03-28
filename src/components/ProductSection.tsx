@@ -44,7 +44,7 @@ const products = [
   { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg, tags: ["Damen", "Dirndel"] },
   { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg, tags: ["Damen", "Lederhosen"] },
   { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg, tags: ["Herren", "Lederhosen"] },
-  { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg, tags: ["Damen", "T-Shirts"] },
+  { name: "Pine Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtPineTeeMenImg, tags: ["Herren", "T-Shirts"] },
   { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img, tags: ["Herren", "T-Shirts"] },
   { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img, tags: ["Herren", "T-Shirts"] },
   { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, tags: ["Damen", "T-Shirts"] },
