@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProductGalleryModal from "./ProductGalleryModal";
+import { useI18n } from "@/i18n/I18nContext";
 import hoodieImg from "@/assets/product-hoodie.jpg";
 import tshirtImg from "@/assets/product-tshirt.jpg";
 import sweaterImg from "@/assets/product-sweater.jpg";
@@ -30,7 +31,6 @@ import sweaterWomen3Img from "@/assets/product-sweater-women-3.jpg";
 import sweaterMen1Img from "@/assets/product-sweater-men-1.jpg";
 import sweaterMen2Img from "@/assets/product-sweater-men-2.jpg";
 
-// Detail images
 import detailForestWomenCloseup from "@/assets/detail-foresthoodie-women-closeup.jpg";
 import detailForestWomenBack from "@/assets/detail-foresthoodie-women-back.jpg";
 import detailForestMenCloseup from "@/assets/detail-foresthoodie-men-closeup.jpg";
@@ -50,8 +50,6 @@ import detailSweaterMenCloseup from "@/assets/detail-sweater-men-closeup.jpg";
 
 type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts" | "Sweater";
 
-const filters: FilterTag[] = ["Alle", "Damen", "Herren", "Dirndel", "Forest", "Lederhosen", "T-Shirts", "Sweater"];
-
 interface Product {
   name: string;
   price: string;
@@ -66,36 +64,50 @@ interface Product {
 const products: Product[] = [
   { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg, images: [hoodieImg, detailForestWomenCloseup, detailForestWomenBack], tags: ["Damen", "Forest"], description: "Oversized Mönchskutten-Hoodie mit tiefer Kapuze und gesticktem Tannen-Motiv. Inspiriert von den Wäldern des Schwarzwalds.", material: "100 % Bio-Baumwolle, 380 g/m² French Terry, gebürstetes Innenfleece" },
   { name: "Forest Hoodie Herren", price: "89 €", category: "Hoodies", image: foresthoodieMenImg, images: [foresthoodieMenImg, detailForestMenCloseup, detailForestMenBack], tags: ["Herren", "Forest"], description: "Maskuline Interpretation der Mönchskutte mit spitz zulaufender Kapuze und Wald-Stickerei auf der Brust.", material: "100 % Bio-Baumwolle, 380 g/m² French Terry, gebürstetes Innenfleece" },
-  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg, images: [foresthoodieMenShortImg, detailForestMenCloseup], tags: ["Herren", "Forest"], description: "Kurz geschnittener Forest Hoodie auf Gürtelhöhe mit langen Ärmeln. Moderner Streetwear-Schnitt trifft auf Mönchskutten-Design.", material: "100 % Bio-Baumwolle, 350 g/m² French Terry" },
-  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg, images: [foresthoodieMenCreativeImg, detailForestMenCloseup], tags: ["Herren", "Forest"], description: "Kreative Avantgarde-Version des Forest Hoodie mit asymmetrischem Schnitt und experimenteller Kapuzenform.", material: "95 % Bio-Baumwolle, 5 % Elastan, 400 g/m² Strukturjersey" },
-  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg, images: [dirndelhoodieImg, detailDirndelCloseup], tags: ["Damen", "Dirndel"], description: "Der Original-Dirndelhoodie: Trachten-Mieder trifft Hoodie-Komfort. Mit Schnürung, Blumenstickerei und Schürzen-Element.", material: "Oberstoff: 95 % Baumwolle, 5 % Elastan. Schürze: 100 % Viskose" },
-  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg, images: [dirndelhoodieVneckImg, detailDirndelVneckCloseup], tags: ["Damen", "Dirndel"], description: "Elegante V-Ausschnitt-Variante mit Edelweiß-Stickerei entlang des Dekolletés und traditioneller Kordel-Schnürung.", material: "95 % Baumwolle, 5 % Elastan, 360 g/m² mit Satin-Einfassung" },
-  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg, images: [dirndelhoodieGreenImg, detailDirndelGreenCloseup], tags: ["Damen", "Dirndel"], description: "Waldgrüner Dirndelhoodie mit weißer Klöppelspitze am Ausschnitt und filigrane Farn-Stickerei. Trifft Schwarzwälder Handwerk.", material: "100 % Bio-Baumwolle, 370 g/m². Spitze: Baumwoll-Klöppelspitze" },
-  { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg, images: [dirndelhoodiePinkImg, detailDirndelPinkCloseup, detailDirndelPinkLifestyle], tags: ["Damen", "Dirndel"], description: "Statement-Piece in Alpenrosa mit traditioneller Schnürung, Dirndl-Schürze und floraler Stickerei.", material: "95 % Baumwolle, 5 % Elastan, 360 g/m². Schürze: Baumwoll-Batist" },
-  { name: "Dirndelhoodie Pink Cropped", price: "109 €", category: "Hoodies", image: dirndelhoodiePinkCroppedImg, images: [dirndelhoodiePinkCroppedImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Kurz geschnittene Variante des Pink Dirndelhoodie – perfekt zu High-Waist-Jeans oder Trachtenrock.", material: "95 % Baumwolle, 5 % Elastan, 340 g/m² Crop-Schnitt" },
-  { name: "Dirndelhoodie Pink Puffärmel", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkPuffImg, images: [dirndelhoodiePinkPuffImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Romantische Puffärmel treffen auf Dirndl-Hoodie – voluminöse Schulterpartie mit traditioneller Mieder-Schnürung.", material: "100 % Bio-Baumwolle, 370 g/m². Ärmel: Doppellagig mit Organza-Einlage" },
-  { name: "Dirndelhoodie Pink Oversized", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkOversizedImg, images: [dirndelhoodiePinkOversizedImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Lässig-weiter Oversized-Schnitt mit allen Dirndl-Details. Cozy meets Tracht.", material: "100 % Bio-Baumwolle, 400 g/m² Heavyweight French Terry" },
-  { name: "Dirndelhoodie Pink Schnürung", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkLaceupImg, images: [dirndelhoodiePinkLaceupImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Aufwendige Korsett-Schnürung über die gesamte Front – unser aufwändigstes Dirndelhoodie-Design.", material: "95 % Baumwolle, 5 % Elastan, 370 g/m². Ösen: Antik-Messing" },
-  { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg, images: [dirndelhoodiePinkCapeImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Cape-Poncho-Variante des Dirndelhoodie – fließender Überwurf mit Kapuze und Dirndl-Akzenten.", material: "100 % Bio-Baumwolle, 320 g/m² leichter French Terry" },
-  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg, images: [lederhosenhoodieImg, detailLederhosenWomenCloseup], tags: ["Damen", "Lederhosen"], description: "Feminin geschnittener Lederhosen-Hoodie mit Wildleder-Optik-Panels, Hirschgeweih-Verschlüssen und Trachtenstickerei.", material: "Hoodie: 100 % Bio-Baumwolle, 380 g/m². Panels: Veganes Wildleder (Polyester/PU)" },
-  { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg, images: [lederhosenhoodieMenImg, detailLederhosenMenCloseup, detailLederhosenMenLifestyle], tags: ["Herren", "Lederhosen"], description: "Braun-grüner Zweifarbton-Hoodie mit Hirschgeweih-Toggle-Verschlüssen, Wildleder-Optik und traditioneller Stickerei.", material: "Hoodie: 100 % Bio-Baumwolle, 400 g/m². Panels: Veganes Wildleder. Toggles: Geweih-Replik (Harz)" },
-  { name: "Pine Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtPineTeeMenImg, images: [tshirtPineTeeMenImg, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"], description: "Minimalistisches T-Shirt mit gesticktem Kiefern-Motiv auf der Brust. Schwarzwald-Feeling für jeden Tag.", material: "100 % Bio-Baumwolle, 180 g/m² Single Jersey, enzymgewaschen" },
-  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img, images: [tshirtMen1Img, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"], description: "T-Shirt mit detailliertem Schwarzwald-Panorama-Print. Berg- und Waldsilhouette auf der Brust.", material: "100 % Bio-Baumwolle, 180 g/m² Single Jersey, enzymgewaschen" },
-  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img, images: [tshirtMen2Img, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"], description: "Gebirgssilhouette als aufwändiger Print – inspiriert von den Gipfeln des Schwarzwalds.", material: "100 % Bio-Baumwolle, 180 g/m² Single Jersey, enzymgewaschen" },
-  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, images: [tshirtWomen1Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"], description: "Botanischer Wildblumen-Print mit Schwarzwälder Wiesenblumen – handgezeichnete Illustration.", material: "100 % Bio-Baumwolle, 160 g/m² leichter Single Jersey, Relaxed Fit" },
-  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img, images: [tshirtWomen2Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"], description: "Elegantes Hirschgeweih-Motiv mit floralen Elementen – Natur trifft feminine Ästhetik.", material: "100 % Bio-Baumwolle, 160 g/m² leichter Single Jersey, Relaxed Fit" },
-  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img, images: [tshirtWomen3Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"], description: "Weiter Panorama-Print über die gesamte Brust – Schwarzwälder Berglandschaft in sanften Tönen.", material: "100 % Bio-Baumwolle, 160 g/m² leichter Single Jersey, Relaxed Fit" },
-  { name: "Moss Sweater Frauen", price: "79 €", category: "Sweater", image: sweaterImg, images: [sweaterImg, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Moosgrüner Rundhals-Sweater in cleaner Silhouette. Weiches Fleece-Innenfutter für maximalen Komfort.", material: "85 % Bio-Baumwolle, 15 % recyceltes Polyester, 320 g/m² Fleece-Futter" },
-  { name: "Cable Knit Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen1Img, images: [sweaterWomen1Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Klassisches Zopfstrickmuster in Waldgrün – traditionelles Handwerk in modernem Schnitt.", material: "70 % Merinowolle, 30 % Bio-Baumwolle, Handwäsche empfohlen" },
-  { name: "Tracht Sweater Frauen", price: "99 €", category: "Sweater", image: sweaterWomen2Img, images: [sweaterWomen2Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Trachten-inspirierter Strickpullover mit Edelweiß- und Hirsch-Intarsienmuster in warmen Erdtönen.", material: "80 % Merinowolle, 20 % Alpaka, Intarsien handgestrickt" },
-  { name: "Forest Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen3Img, images: [sweaterWomen3Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Cremefarbener Pullover mit eingestricktem Wald-Muster – Tannensilhouetten in Ton-in-Ton-Technik.", material: "70 % Merinowolle, 30 % Bio-Baumwolle, 280 g/m²" },
-  { name: "Cable Knit Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen1Img, images: [sweaterMen1Img, detailSweaterMenCloseup], tags: ["Herren", "Sweater"], description: "Schwerer Zopfstrick-Pullover in tiefem Waldgrün mit kontrastierenden Bündchen in Erdbraun.", material: "70 % Merinowolle, 30 % Bio-Baumwolle, 340 g/m²" },
-  { name: "Mountain Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen2Img, images: [sweaterMen2Img, detailSweaterMenCloseup], tags: ["Herren", "Sweater"], description: "Robuster Pullover mit eingestricktem Bergpanorama – Schwarz-Grau-Grün-Töne für den urbanen Bergsteiger.", material: "60 % Merinowolle, 30 % Bio-Baumwolle, 10 % Nylon, 360 g/m²" },
+  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg, images: [foresthoodieMenShortImg, detailForestMenCloseup], tags: ["Herren", "Forest"], description: "Kurz geschnittener Forest Hoodie auf Gürtelhöhe mit langen Ärmeln.", material: "100 % Bio-Baumwolle, 350 g/m² French Terry" },
+  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg, images: [foresthoodieMenCreativeImg, detailForestMenCloseup], tags: ["Herren", "Forest"], description: "Kreative Avantgarde-Version des Forest Hoodie mit asymmetrischem Schnitt.", material: "95 % Bio-Baumwolle, 5 % Elastan, 400 g/m² Strukturjersey" },
+  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg, images: [dirndelhoodieImg, detailDirndelCloseup], tags: ["Damen", "Dirndel"], description: "Der Original-Dirndelhoodie: Trachten-Mieder trifft Hoodie-Komfort.", material: "Oberstoff: 95 % Baumwolle, 5 % Elastan. Schürze: 100 % Viskose" },
+  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg, images: [dirndelhoodieVneckImg, detailDirndelVneckCloseup], tags: ["Damen", "Dirndel"], description: "Elegante V-Ausschnitt-Variante mit Edelweiß-Stickerei.", material: "95 % Baumwolle, 5 % Elastan, 360 g/m² mit Satin-Einfassung" },
+  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg, images: [dirndelhoodieGreenImg, detailDirndelGreenCloseup], tags: ["Damen", "Dirndel"], description: "Waldgrüner Dirndelhoodie mit weißer Klöppelspitze.", material: "100 % Bio-Baumwolle, 370 g/m². Spitze: Baumwoll-Klöppelspitze" },
+  { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg, images: [dirndelhoodiePinkImg, detailDirndelPinkCloseup, detailDirndelPinkLifestyle], tags: ["Damen", "Dirndel"], description: "Statement-Piece in Alpenrosa mit traditioneller Schnürung.", material: "95 % Baumwolle, 5 % Elastan, 360 g/m². Schürze: Baumwoll-Batist" },
+  { name: "Dirndelhoodie Pink Cropped", price: "109 €", category: "Hoodies", image: dirndelhoodiePinkCroppedImg, images: [dirndelhoodiePinkCroppedImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Kurz geschnittene Variante des Pink Dirndelhoodie.", material: "95 % Baumwolle, 5 % Elastan, 340 g/m² Crop-Schnitt" },
+  { name: "Dirndelhoodie Pink Puffärmel", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkPuffImg, images: [dirndelhoodiePinkPuffImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Romantische Puffärmel treffen auf Dirndl-Hoodie.", material: "100 % Bio-Baumwolle, 370 g/m². Ärmel: Doppellagig mit Organza-Einlage" },
+  { name: "Dirndelhoodie Pink Oversized", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkOversizedImg, images: [dirndelhoodiePinkOversizedImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Lässig-weiter Oversized-Schnitt mit allen Dirndl-Details.", material: "100 % Bio-Baumwolle, 400 g/m² Heavyweight French Terry" },
+  { name: "Dirndelhoodie Pink Schnürung", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkLaceupImg, images: [dirndelhoodiePinkLaceupImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Aufwendige Korsett-Schnürung über die gesamte Front.", material: "95 % Baumwolle, 5 % Elastan, 370 g/m². Ösen: Antik-Messing" },
+  { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg, images: [dirndelhoodiePinkCapeImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"], description: "Cape-Poncho-Variante des Dirndelhoodie.", material: "100 % Bio-Baumwolle, 320 g/m² leichter French Terry" },
+  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg, images: [lederhosenhoodieImg, detailLederhosenWomenCloseup], tags: ["Damen", "Lederhosen"], description: "Feminin geschnittener Lederhosen-Hoodie mit Wildleder-Optik-Panels.", material: "Hoodie: 100 % Bio-Baumwolle, 380 g/m². Panels: Veganes Wildleder" },
+  { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg, images: [lederhosenhoodieMenImg, detailLederhosenMenCloseup, detailLederhosenMenLifestyle], tags: ["Herren", "Lederhosen"], description: "Braun-grüner Zweifarbton-Hoodie mit Hirschgeweih-Toggle-Verschlüssen.", material: "Hoodie: 100 % Bio-Baumwolle, 400 g/m². Panels: Veganes Wildleder" },
+  { name: "Pine Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtPineTeeMenImg, images: [tshirtPineTeeMenImg, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"], description: "Minimalistisches T-Shirt mit gesticktem Kiefern-Motiv.", material: "100 % Bio-Baumwolle, 180 g/m² Single Jersey" },
+  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img, images: [tshirtMen1Img, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"], description: "T-Shirt mit Schwarzwald-Panorama-Print.", material: "100 % Bio-Baumwolle, 180 g/m² Single Jersey" },
+  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img, images: [tshirtMen2Img, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"], description: "Gebirgssilhouette als aufwändiger Print.", material: "100 % Bio-Baumwolle, 180 g/m² Single Jersey" },
+  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, images: [tshirtWomen1Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"], description: "Botanischer Wildblumen-Print.", material: "100 % Bio-Baumwolle, 160 g/m² Single Jersey, Relaxed Fit" },
+  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img, images: [tshirtWomen2Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"], description: "Elegantes Hirschgeweih-Motiv mit floralen Elementen.", material: "100 % Bio-Baumwolle, 160 g/m² Single Jersey, Relaxed Fit" },
+  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img, images: [tshirtWomen3Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"], description: "Weiter Panorama-Print über die gesamte Brust.", material: "100 % Bio-Baumwolle, 160 g/m² Single Jersey, Relaxed Fit" },
+  { name: "Moss Sweater Frauen", price: "79 €", category: "Sweater", image: sweaterImg, images: [sweaterImg, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Moosgrüner Rundhals-Sweater in cleaner Silhouette.", material: "85 % Bio-Baumwolle, 15 % recyceltes Polyester, 320 g/m²" },
+  { name: "Cable Knit Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen1Img, images: [sweaterWomen1Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Klassisches Zopfstrickmuster in Waldgrün.", material: "70 % Merinowolle, 30 % Bio-Baumwolle" },
+  { name: "Tracht Sweater Frauen", price: "99 €", category: "Sweater", image: sweaterWomen2Img, images: [sweaterWomen2Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Trachten-inspirierter Strickpullover.", material: "80 % Merinowolle, 20 % Alpaka, Intarsien handgestrickt" },
+  { name: "Forest Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen3Img, images: [sweaterWomen3Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"], description: "Cremefarbener Pullover mit eingestricktem Wald-Muster.", material: "70 % Merinowolle, 30 % Bio-Baumwolle, 280 g/m²" },
+  { name: "Cable Knit Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen1Img, images: [sweaterMen1Img, detailSweaterMenCloseup], tags: ["Herren", "Sweater"], description: "Schwerer Zopfstrick-Pullover in tiefem Waldgrün.", material: "70 % Merinowolle, 30 % Bio-Baumwolle, 340 g/m²" },
+  { name: "Mountain Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen2Img, images: [sweaterMen2Img, detailSweaterMenCloseup], tags: ["Herren", "Sweater"], description: "Robuster Pullover mit eingestricktem Bergpanorama.", material: "60 % Merinowolle, 30 % Bio-Baumwolle, 10 % Nylon, 360 g/m²" },
 ];
 
 const ProductSection = () => {
   const [activeFilter, setActiveFilter] = useState<FilterTag>("Alle");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { t } = useI18n();
+
+  const filterLabels: Record<FilterTag, string> = {
+    "Alle": t("products.filter.all"),
+    "Damen": t("products.filter.women"),
+    "Herren": t("products.filter.men"),
+    "Dirndel": "Dirndel",
+    "Forest": "Forest",
+    "Lederhosen": "Lederhosen",
+    "T-Shirts": "T-Shirts",
+    "Sweater": "Sweater",
+  };
+
+  const filters: FilterTag[] = ["Alle", "Damen", "Herren", "Dirndel", "Forest", "Lederhosen", "T-Shirts", "Sweater"];
 
   const filteredProducts = activeFilter === "Alle"
     ? products
@@ -111,14 +123,13 @@ const ProductSection = () => {
           className="text-center mb-12"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium mb-3">
-            {filters[0] === "Alle" ? "Neue Kollektion" : "New Collection"}
+            {t("products.tag")}
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
-            Nachhaltige Hoodies, T-Shirts & Sweater
+            {t("products.title")}
           </h2>
         </motion.div>
 
-        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {filters.map((filter) => (
             <button
@@ -130,7 +141,7 @@ const ProductSection = () => {
                   : "bg-transparent text-muted-foreground border-border hover:border-primary hover:text-foreground"
               }`}
             >
-              {filter}
+              {filterLabels[filter]}
               <span className="ml-1.5 text-xs opacity-60">
                 {filter === "Alle"
                   ? products.length
@@ -140,7 +151,6 @@ const ProductSection = () => {
           ))}
         </div>
 
-        {/* Product Grid */}
         <motion.div layout className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
@@ -169,7 +179,7 @@ const ProductSection = () => {
                   </span>
                   {product.images.length > 1 && (
                     <span className="absolute top-4 right-4 text-xs text-foreground bg-background/80 backdrop-blur-sm px-2 py-1 rounded-full">
-                      {product.images.length} Bilder
+                      {product.images.length} {t("products.images")}
                     </span>
                   )}
                 </div>
@@ -183,7 +193,6 @@ const ProductSection = () => {
         </motion.div>
       </div>
 
-      {/* Gallery Modal */}
       <ProductGalleryModal
         isOpen={!!selectedProduct}
         onClose={() => setSelectedProduct(null)}
