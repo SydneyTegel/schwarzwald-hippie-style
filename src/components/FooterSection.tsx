@@ -4,6 +4,20 @@ import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 const FooterSection = () => {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Bitte gib eine gültige E-Mail-Adresse ein.");
+      return;
+    }
+    setSubscribed(true);
+    localStorage.setItem("newsletter-subscribed", "true");
+    toast.success("Willkommen! Dein 10 %-Rabattcode kommt per E-Mail.");
+  };
+
   return (
     <footer className="py-16 border-t border-border">
       <div className="container px-4">
