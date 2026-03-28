@@ -114,7 +114,7 @@ const ProductSection = () => {
             Neue Kollektion
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
-            Unsere Pieces
+            Nachhaltige Hoodies, T-Shirts & Sweater
           </h2>
         </motion.div>
 
@@ -157,7 +157,7 @@ const ProductSection = () => {
                 <div className="relative overflow-hidden rounded-lg bg-card mb-4">
                   <img
                     src={product.image}
-                    alt={product.name}
+                    alt={`${product.name} – nachhaltige Schwarzwald Streetwear aus Bio-Baumwolle`}
                     loading="lazy"
                     width={800}
                     height={1024}

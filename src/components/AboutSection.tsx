@@ -21,11 +21,11 @@ const AboutSection = () => {
             Wer wir sind
           </p>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Born in the Forest
+            Nachhaltige Mode aus dem Schwarzwald
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
             Schwarzwaldjungfrau ist mehr als ein Label – es ist ein Lebensgefühl.
-            Wir verbinden urbane Streetwear mit der rauen Schönheit des Schwarzwalds.
+            Wir verbinden urbane Streetwear mit der rauen Schönheit des Schwarzwalds. Fair produziert aus Bio-Baumwolle.
           </p>
         </motion.div>
 
