@@ -9,10 +9,14 @@ import lederhosenhoodieMenImg from "@/assets/product-lederhosenhoodie-men.jpg";
 import dirndelhoodieGreenImg from "@/assets/product-dirndelhoodie-green.jpg";
 import dirndelhoodiePinkImg from "@/assets/product-dirndelhoodie-pink.jpg";
 import foresthoodieMenImg from "@/assets/product-foresthoodie-men.jpg";
+import foresthoodieMenShortImg from "@/assets/product-foresthoodie-men-short.jpg";
+import foresthoodieMenCreativeImg from "@/assets/product-foresthoodie-men-creative.jpg";
 
 const products = [
   { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg },
   { name: "Forest Hoodie Herren", price: "89 €", category: "Hoodies", image: foresthoodieMenImg },
+  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg },
+  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg },
   { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg },
   { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg },
   { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg },
