@@ -8,6 +8,11 @@ import lederhosenhoodieImg from "@/assets/product-lederhosenhoodie.jpg";
 import lederhosenhoodieMenImg from "@/assets/product-lederhosenhoodie-men.jpg";
 import dirndelhoodieGreenImg from "@/assets/product-dirndelhoodie-green.jpg";
 import dirndelhoodiePinkImg from "@/assets/product-dirndelhoodie-pink.jpg";
+import dirndelhoodiePinkCroppedImg from "@/assets/product-dirndelhoodie-pink-cropped.jpg";
+import dirndelhoodiePinkPuffImg from "@/assets/product-dirndelhoodie-pink-puff.jpg";
+import dirndelhoodiePinkOversizedImg from "@/assets/product-dirndelhoodie-pink-oversized.jpg";
+import dirndelhoodiePinkLaceupImg from "@/assets/product-dirndelhoodie-pink-laceup.jpg";
+import dirndelhoodiePinkCapeImg from "@/assets/product-dirndelhoodie-pink-cape.jpg";
 import foresthoodieMenImg from "@/assets/product-foresthoodie-men.jpg";
 import foresthoodieMenShortImg from "@/assets/product-foresthoodie-men-short.jpg";
 import foresthoodieMenCreativeImg from "@/assets/product-foresthoodie-men-creative.jpg";
@@ -21,6 +26,11 @@ const products = [
   { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg },
   { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg },
   { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg },
+  { name: "Dirndelhoodie Pink Cropped", price: "109 €", category: "Hoodies", image: dirndelhoodiePinkCroppedImg },
+  { name: "Dirndelhoodie Pink Puffärmel", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkPuffImg },
+  { name: "Dirndelhoodie Pink Oversized", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkOversizedImg },
+  { name: "Dirndelhoodie Pink Schnürung", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkLaceupImg },
+  { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg },
   { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg },
   { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg },
   { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg },
