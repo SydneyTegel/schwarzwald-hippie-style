@@ -60,7 +60,7 @@ const FooterSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <Link to="/" className="flex items-center gap-2.5">
-              <img src={logoIcon} alt="Schwarzwaldjungfrau Logo" width={24} height={24} className="w-6 h-6" loading="lazy" />
+              <img src={logoIcon} alt="Schwarzwaldjungfrau Logo" width={48} height={48} className="w-12 h-12" loading="lazy" />
               <div className="flex flex-col leading-none">
                 <span className="font-heading text-sm font-bold tracking-tight text-foreground">SCHWARZWALD</span>
                 <span className="font-heading text-sm font-bold tracking-tight text-primary">JUNGFRAU</span>
