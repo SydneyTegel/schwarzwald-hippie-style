@@ -3,18 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logoIcon from "@/assets/logo-icon-white.png";
-
-const navLinks = [
-  { label: "Shop", to: "/shop" },
-  { label: "Lookbook", to: "/lookbook" },
-  { label: "Magazin", to: "/magazin" },
-  { label: "Crowdfunding", to: "/crowdfunding" },
-  { label: "Über uns", to: "/ueber-uns" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useI18n } from "@/i18n/I18nContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { t } = useI18n();
+
+  const navLinks = [
+    { label: t("nav.shop"), to: "/shop" },
+    { label: t("nav.lookbook"), to: "/lookbook" },
+    { label: t("nav.magazin"), to: "/magazin" },
+    { label: t("nav.crowdfunding"), to: "/crowdfunding" },
+    { label: t("nav.about"), to: "/ueber-uns" },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -42,16 +45,20 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          <LanguageSwitcher />
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            className="text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
