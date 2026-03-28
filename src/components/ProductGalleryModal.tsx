@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ShoppingBag, Check } from "lucide-react";
+import { toast } from "sonner";
+
+const sizes = ["XS", "S", "M", "L", "XL", "XXL"] as const;
 
 interface ProductGalleryModalProps {
   isOpen: boolean;
@@ -14,9 +17,21 @@ interface ProductGalleryModalProps {
 
 const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, description, material }: ProductGalleryModalProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [added, setAdded] = useState(false);
 
   const goNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      toast.error("Bitte wähle eine Größe aus.");
+      return;
+    }
+    setAdded(true);
+    toast.success(`${productName} (${selectedSize}) zum Warenkorb hinzugefügt.`);
+    setTimeout(() => setAdded(false), 2000);
+  };
 
   if (!isOpen) return null;
 
@@ -101,9 +116,7 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, desc
               <span className="text-amber font-medium text-lg mb-4">{price}</span>
 
               {description && (
-                <div className="mb-4">
-                  <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{description}</p>
               )}
 
               {material && (
@@ -113,8 +126,51 @@ const ProductGalleryModal = ({ isOpen, onClose, productName, price, images, desc
                 </div>
               )}
 
+              {/* Size selector */}
+              <div className="mb-5">
+                <p className="text-xs uppercase tracking-widest text-primary font-medium mb-2">Größe</p>
+                <div className="grid grid-cols-6 gap-1.5">
+                  {sizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`py-2 rounded-md text-xs font-medium transition-all border ${
+                        selectedSize === size
+                          ? "bg-primary text-primary-foreground border-primary"
+                          : "bg-transparent text-foreground border-border hover:border-primary"
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Add to cart button */}
+              <button
+                onClick={handleAddToCart}
+                className={`w-full py-3 rounded-lg font-medium text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                  added
+                    ? "bg-green-600 text-white"
+                    : "bg-primary text-primary-foreground hover:opacity-90"
+                }`}
+              >
+                {added ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    Hinzugefügt
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag className="w-4 h-4" />
+                    In den Warenkorb
+                  </>
+                )}
+              </button>
+
+              {/* Thumbnails */}
               {images.length > 1 && (
-                <div className="grid grid-cols-3 md:grid-cols-2 gap-2 mt-auto pt-4 border-t border-border">
+                <div className="grid grid-cols-3 md:grid-cols-2 gap-2 mt-5 pt-4 border-t border-border">
                   {images.map((img, i) => (
                     <button
                       key={i}
