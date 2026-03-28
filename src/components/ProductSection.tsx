@@ -39,6 +39,14 @@ import detailDirndelPinkCloseup from "@/assets/detail-dirndelhoodie-pink-closeup
 import detailDirndelPinkLifestyle from "@/assets/detail-dirndelhoodie-pink-lifestyle.jpg";
 import detailLederhosenMenCloseup from "@/assets/detail-lederhosenhoodie-men-closeup.jpg";
 import detailLederhosenMenLifestyle from "@/assets/detail-lederhosenhoodie-men-lifestyle.jpg";
+import detailDirndelGreenCloseup from "@/assets/detail-dirndelhoodie-green-closeup.jpg";
+import detailDirndelCloseup from "@/assets/detail-dirndelhoodie-closeup.jpg";
+import detailDirndelVneckCloseup from "@/assets/detail-dirndelhoodie-vneck-closeup.jpg";
+import detailLederhosenWomenCloseup from "@/assets/detail-lederhosenhoodie-women-closeup.jpg";
+import detailTshirtMenCloseup from "@/assets/detail-tshirt-men-closeup.jpg";
+import detailTshirtWomenCloseup from "@/assets/detail-tshirt-women-closeup.jpg";
+import detailSweaterWomenCloseup from "@/assets/detail-sweater-women-closeup.jpg";
+import detailSweaterMenCloseup from "@/assets/detail-sweater-men-closeup.jpg";
 
 type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts" | "Sweater";
 
@@ -56,31 +64,31 @@ interface Product {
 const products: Product[] = [
   { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg, images: [hoodieImg, detailForestWomenCloseup, detailForestWomenBack], tags: ["Damen", "Forest"] },
   { name: "Forest Hoodie Herren", price: "89 €", category: "Hoodies", image: foresthoodieMenImg, images: [foresthoodieMenImg, detailForestMenCloseup, detailForestMenBack], tags: ["Herren", "Forest"] },
-  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg, images: [foresthoodieMenShortImg], tags: ["Herren", "Forest"] },
-  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg, images: [foresthoodieMenCreativeImg], tags: ["Herren", "Forest"] },
-  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg, images: [dirndelhoodieImg], tags: ["Damen", "Dirndel"] },
-  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg, images: [dirndelhoodieVneckImg], tags: ["Damen", "Dirndel"] },
-  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg, images: [dirndelhoodieGreenImg], tags: ["Damen", "Dirndel"] },
+  { name: "Forest Hoodie Herren Kurz", price: "79 €", category: "Hoodies", image: foresthoodieMenShortImg, images: [foresthoodieMenShortImg, detailForestMenCloseup], tags: ["Herren", "Forest"] },
+  { name: "Forest Hoodie Herren Avantgarde", price: "99 €", category: "Hoodies", image: foresthoodieMenCreativeImg, images: [foresthoodieMenCreativeImg, detailForestMenCloseup], tags: ["Herren", "Forest"] },
+  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg, images: [dirndelhoodieImg, detailDirndelCloseup], tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg, images: [dirndelhoodieVneckImg, detailDirndelVneckCloseup], tags: ["Damen", "Dirndel"] },
+  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg, images: [dirndelhoodieGreenImg, detailDirndelGreenCloseup], tags: ["Damen", "Dirndel"] },
   { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg, images: [dirndelhoodiePinkImg, detailDirndelPinkCloseup, detailDirndelPinkLifestyle], tags: ["Damen", "Dirndel"] },
   { name: "Dirndelhoodie Pink Cropped", price: "109 €", category: "Hoodies", image: dirndelhoodiePinkCroppedImg, images: [dirndelhoodiePinkCroppedImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"] },
   { name: "Dirndelhoodie Pink Puffärmel", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkPuffImg, images: [dirndelhoodiePinkPuffImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"] },
   { name: "Dirndelhoodie Pink Oversized", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkOversizedImg, images: [dirndelhoodiePinkOversizedImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"] },
   { name: "Dirndelhoodie Pink Schnürung", price: "129 €", category: "Hoodies", image: dirndelhoodiePinkLaceupImg, images: [dirndelhoodiePinkLaceupImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"] },
   { name: "Dirndelhoodie Pink Cape", price: "99 €", category: "Hoodies", image: dirndelhoodiePinkCapeImg, images: [dirndelhoodiePinkCapeImg, detailDirndelPinkCloseup], tags: ["Damen", "Dirndel"] },
-  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg, images: [lederhosenhoodieImg], tags: ["Damen", "Lederhosen"] },
+  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg, images: [lederhosenhoodieImg, detailLederhosenWomenCloseup], tags: ["Damen", "Lederhosen"] },
   { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg, images: [lederhosenhoodieMenImg, detailLederhosenMenCloseup, detailLederhosenMenLifestyle], tags: ["Herren", "Lederhosen"] },
-  { name: "Pine Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtPineTeeMenImg, images: [tshirtPineTeeMenImg], tags: ["Herren", "T-Shirts"] },
-  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img, images: [tshirtMen1Img], tags: ["Herren", "T-Shirts"] },
-  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img, images: [tshirtMen2Img], tags: ["Herren", "T-Shirts"] },
-  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, images: [tshirtWomen1Img], tags: ["Damen", "T-Shirts"] },
-  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img, images: [tshirtWomen2Img], tags: ["Damen", "T-Shirts"] },
-  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img, images: [tshirtWomen3Img], tags: ["Damen", "T-Shirts"] },
-  { name: "Moss Sweater Frauen", price: "79 €", category: "Sweater", image: sweaterImg, images: [sweaterImg], tags: ["Damen", "Sweater"] },
-  { name: "Cable Knit Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen1Img, images: [sweaterWomen1Img], tags: ["Damen", "Sweater"] },
-  { name: "Tracht Sweater Frauen", price: "99 €", category: "Sweater", image: sweaterWomen2Img, images: [sweaterWomen2Img], tags: ["Damen", "Sweater"] },
-  { name: "Forest Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen3Img, images: [sweaterWomen3Img], tags: ["Damen", "Sweater"] },
-  { name: "Cable Knit Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen1Img, images: [sweaterMen1Img], tags: ["Herren", "Sweater"] },
-  { name: "Mountain Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen2Img, images: [sweaterMen2Img], tags: ["Herren", "Sweater"] },
+  { name: "Pine Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtPineTeeMenImg, images: [tshirtPineTeeMenImg, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"] },
+  { name: "Schwarzwald Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen1Img, images: [tshirtMen1Img, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"] },
+  { name: "Mountain Tee Herren", price: "49 €", category: "T-Shirts", image: tshirtMen2Img, images: [tshirtMen2Img, detailTshirtMenCloseup], tags: ["Herren", "T-Shirts"] },
+  { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, images: [tshirtWomen1Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"] },
+  { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img, images: [tshirtWomen2Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"] },
+  { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img, images: [tshirtWomen3Img, detailTshirtWomenCloseup], tags: ["Damen", "T-Shirts"] },
+  { name: "Moss Sweater Frauen", price: "79 €", category: "Sweater", image: sweaterImg, images: [sweaterImg, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"] },
+  { name: "Cable Knit Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen1Img, images: [sweaterWomen1Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"] },
+  { name: "Tracht Sweater Frauen", price: "99 €", category: "Sweater", image: sweaterWomen2Img, images: [sweaterWomen2Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"] },
+  { name: "Forest Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen3Img, images: [sweaterWomen3Img, detailSweaterWomenCloseup], tags: ["Damen", "Sweater"] },
+  { name: "Cable Knit Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen1Img, images: [sweaterMen1Img, detailSweaterMenCloseup], tags: ["Herren", "Sweater"] },
+  { name: "Mountain Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen2Img, images: [sweaterMen2Img, detailSweaterMenCloseup], tags: ["Herren", "Sweater"] },
 ];
 
 const ProductSection = () => {
