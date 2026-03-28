@@ -22,6 +22,7 @@ import tshirtMen2Img from "@/assets/product-tshirt-men-2.jpg";
 import tshirtWomen1Img from "@/assets/product-tshirt-women-1.jpg";
 import tshirtWomen2Img from "@/assets/product-tshirt-women-2.jpg";
 import tshirtWomen3Img from "@/assets/product-tshirt-women-3.jpg";
+import tshirtPineTeeMenImg from "@/assets/product-tshirt-pinetee-men.jpg";
 
 type FilterTag = "Alle" | "Damen" | "Herren" | "Dirndel" | "Forest" | "Lederhosen" | "T-Shirts";
 
