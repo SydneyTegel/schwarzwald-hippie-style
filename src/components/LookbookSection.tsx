@@ -25,6 +25,7 @@ const images = [
 ];
 
 const LookbookSection = () => {
+  const { t } = useI18n();
   return (
     <section id="lookbook" className="py-20 bg-secondary/30">
       <div className="container">
