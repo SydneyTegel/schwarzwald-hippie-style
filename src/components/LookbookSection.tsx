@@ -7,11 +7,15 @@ import lookbookUrban1 from "@/assets/lookbook-urban-1.jpg";
 import lookbookUrban2 from "@/assets/lookbook-urban-2.jpg";
 import lookbookUrban3 from "@/assets/lookbook-urban-3.jpg";
 import lookbookUrban4 from "@/assets/lookbook-urban-4.jpg";
+import lookbookUrban5 from "@/assets/lookbook-urban-5.jpg";
+import lookbookUrban6 from "@/assets/lookbook-urban-6.jpg";
 
 const images = [
   { src: lookbookUrban1, alt: "Forest Hoodie Frauen – Stuttgart Königstraße", span: "row-span-2" },
   { src: lookbookUrban2, alt: "Forest Hoodie Herren – Berlin Oberbaumbrücke", span: "col-span-2" },
+  { src: lookbookUrban5, alt: "Dirndelhoodie Pink Frauen – Stuttgart City", span: "row-span-2" },
   { src: lookbookUrban3, alt: "Forest Hoodie Herren – Köln Ehrenfeld", span: "row-span-2" },
+  { src: lookbookUrban6, alt: "Dirndelhoodie Pink Frauen – Café in Köln", span: "col-span-2" },
   { src: lookbookUrban4, alt: "Forest Hoodies – Berlin Kreuzberg", span: "col-span-2" },
   { src: lookbook1, alt: "Dirndelhoodie Grün & Spitze – Schwarzwald Trail", span: "row-span-2" },
   { src: lookbook2, alt: "Dirndelhoodie Pink & Lederhosenhoodie – Golden Hour am See", span: "col-span-2" },
