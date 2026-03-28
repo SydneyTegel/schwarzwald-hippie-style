@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Schwarzwald Atmosphäre"
+          alt="Schwarzwald Natur – dunkler Tannenwald als Inspiration für nachhaltige Streetwear"
           className="w-full h-full object-cover"
           width={1920}
           height={1080}
