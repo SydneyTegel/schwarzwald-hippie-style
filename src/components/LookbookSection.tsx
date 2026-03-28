@@ -34,7 +34,7 @@ const LookbookSection = () => {
             Lookbook
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Unsere Pieces im Schwarzwald – wo Streetwear auf Natur trifft.
+            Unsere Pieces zwischen Schwarzwald und City – wo Streetwear auf Natur trifft.
           </p>
         </motion.div>
 
