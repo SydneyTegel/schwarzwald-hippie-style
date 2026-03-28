@@ -12,6 +12,7 @@ import MagazinPage from "./pages/MagazinPage.tsx";
 import UeberUnsPage from "./pages/UeberUnsPage.tsx";
 import BlogDetail from "./pages/BlogDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import NewsletterPopup from "./components/NewsletterPopup.tsx";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <NewsletterPopup />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
