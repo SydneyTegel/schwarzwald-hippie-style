@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Instagram, Mail, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoIcon from "@/assets/logo-icon-clean.png";
+import logoIcon from "@/assets/logo-icon-negative.png";
 import { toast } from "sonner";
 
 const FooterSection = () => {
