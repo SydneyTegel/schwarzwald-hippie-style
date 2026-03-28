@@ -130,7 +130,7 @@ const BlogDetail = () => {
           transition={{ duration: 0.6 }}
         >
           <Link
-            to="/#magazin"
+            to="/magazin"
             className="inline-flex items-center gap-2 text-primary text-sm font-medium mb-6 hover:gap-3 transition-all"
           >
             <ArrowLeft size={16} /> Zurück zum Magazin
@@ -172,7 +172,7 @@ const BlogDetail = () => {
               {article.relatedProducts.map((name) => (
                 <Link
                   key={name}
-                  to="/#shop"
+                  to="/shop"
                   className="px-5 py-3 rounded-xl bg-card border border-border hover:border-primary text-foreground text-sm font-medium transition-colors"
                 >
                   {name} →

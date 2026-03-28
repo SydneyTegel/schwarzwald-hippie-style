@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-forest.jpg";
 
 const HeroSection = () => {
@@ -49,15 +50,18 @@ const HeroSection = () => {
           Verwurzelt im Wald. Getragen auf der Straße.
         </motion.p>
 
-        <motion.a
-          href="#shop"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
-          className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-heading font-semibold text-sm uppercase tracking-widest hover:bg-primary/90 transition-colors"
         >
-          Kollektion entdecken
-        </motion.a>
+          <Link
+            to="/shop"
+            className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-heading font-semibold text-sm uppercase tracking-widest hover:bg-primary/90 transition-colors"
+          >
+            Kollektion entdecken
+          </Link>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

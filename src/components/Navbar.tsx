@@ -1,29 +1,40 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+
+const navLinks = [
+  { label: "Shop", to: "/shop" },
+  { label: "Lookbook", to: "/lookbook" },
+  { label: "Magazin", to: "/magazin" },
+  { label: "Über uns", to: "/ueber-uns" },
+];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
-  const links = ["Shop", "Lookbook", "Magazin", "Über uns", "Kontakt"];
+  const location = useLocation();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container flex items-center justify-between h-16">
-        <a href="/" className="font-heading text-xl font-bold tracking-tight text-foreground">
+        <Link to="/" className="font-heading text-xl font-bold tracking-tight text-foreground">
           SCHWARZWALD<span className="text-primary">JUNGFRAU</span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === link.to || location.pathname.startsWith(link.to + "/")
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
 
@@ -47,15 +58,17 @@ const Navbar = () => {
             className="md:hidden bg-background border-b border-border overflow-hidden"
           >
             <div className="container py-4 flex flex-col gap-4">
-              {links.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === link.to ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
                   onClick={() => setOpen(false)}
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </motion.div>

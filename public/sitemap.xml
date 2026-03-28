@@ -7,6 +7,30 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://schwarzwaldjungfrau.de/shop</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://schwarzwaldjungfrau.de/lookbook</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://schwarzwaldjungfrau.de/magazin</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://schwarzwaldjungfrau.de/ueber-uns</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://schwarzwaldjungfrau.de/magazin/schwarzwald-trifft-streetwear</loc>
     <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
