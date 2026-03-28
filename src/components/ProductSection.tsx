@@ -10,12 +10,12 @@ import dirndelhoodieGreenImg from "@/assets/product-dirndelhoodie-green.jpg";
 import dirndelhoodiePinkImg from "@/assets/product-dirndelhoodie-pink.jpg";
 
 const products = [
-  { name: "Forest Hoodie", price: "89 €", category: "Hoodies", image: hoodieImg },
-  { name: "Dirndelhoodie", price: "109 €", category: "Hoodies", image: dirndelhoodieImg },
-  { name: "Dirndelhoodie V-Neck", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg },
-  { name: "Dirndelhoodie Grün & Spitze", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg },
-  { name: "Dirndelhoodie Pink", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg },
-  { name: "Lederhosenhoodie", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg },
+  { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg },
+  { name: "Dirndelhoodie Frauen", price: "109 €", category: "Hoodies", image: dirndelhoodieImg },
+  { name: "Dirndelhoodie V-Neck Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieVneckImg },
+  { name: "Dirndelhoodie Grün & Spitze Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodieGreenImg },
+  { name: "Dirndelhoodie Pink Frauen", price: "119 €", category: "Hoodies", image: dirndelhoodiePinkImg },
+  { name: "Lederhosenhoodie Frauen", price: "129 €", category: "Hoodies", image: lederhosenhoodieImg },
   { name: "Lederhosenhoodie Herren", price: "129 €", category: "Hoodies", image: lederhosenhoodieMenImg },
   { name: "Pine Tee", price: "49 €", category: "T-Shirts", image: tshirtImg },
   { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg },
