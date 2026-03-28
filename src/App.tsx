@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { I18nProvider } from "@/i18n/I18nContext";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Index from "./pages/Index.tsx";
@@ -26,6 +27,7 @@ const ScrollToTop = () => {
 };
 
 const App = () => (
+  <I18nProvider>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -47,6 +49,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </I18nProvider>
 );
 
 export default App;

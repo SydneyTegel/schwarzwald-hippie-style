@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useI18n } from "@/i18n/I18nContext";
 import lookbook1 from "@/assets/lookbook-1.jpg";
 import lookbook2 from "@/assets/lookbook-2.jpg";
 import lookbook3 from "@/assets/lookbook-3.jpg";
@@ -24,6 +25,7 @@ const images = [
 ];
 
 const LookbookSection = () => {
+  const { t } = useI18n();
   return (
     <section id="lookbook" className="py-20 bg-secondary/30">
       <div className="container">
@@ -35,10 +37,10 @@ const LookbookSection = () => {
           className="text-center mb-12"
         >
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Lookbook – Urban Streetwear trifft Schwarzwald
+            {t("lookbook.title")}
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Nachhaltige Mode zwischen Schwarzwald-Natur und urbanem City-Style in Stuttgart, Berlin & Köln.
+            {t("lookbook.subtitle")}
           </p>
         </motion.div>
 
