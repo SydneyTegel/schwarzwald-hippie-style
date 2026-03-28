@@ -16,6 +16,11 @@ import dirndelhoodiePinkCapeImg from "@/assets/product-dirndelhoodie-pink-cape.j
 import foresthoodieMenImg from "@/assets/product-foresthoodie-men.jpg";
 import foresthoodieMenShortImg from "@/assets/product-foresthoodie-men-short.jpg";
 import foresthoodieMenCreativeImg from "@/assets/product-foresthoodie-men-creative.jpg";
+import tshirtMen1Img from "@/assets/product-tshirt-men-1.jpg";
+import tshirtMen2Img from "@/assets/product-tshirt-men-2.jpg";
+import tshirtWomen1Img from "@/assets/product-tshirt-women-1.jpg";
+import tshirtWomen2Img from "@/assets/product-tshirt-women-2.jpg";
+import tshirtWomen3Img from "@/assets/product-tshirt-women-3.jpg";
 
 const products = [
   { name: "Forest Hoodie Frauen", price: "89 €", category: "Hoodies", image: hoodieImg },
