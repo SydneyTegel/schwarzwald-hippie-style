@@ -55,7 +55,12 @@ const products = [
   { name: "Wildblumen Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen1Img, tags: ["Damen", "T-Shirts"] },
   { name: "Hirschgeweih Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen2Img, tags: ["Damen", "T-Shirts"] },
   { name: "Panorama Tee Frauen", price: "49 €", category: "T-Shirts", image: tshirtWomen3Img, tags: ["Damen", "T-Shirts"] },
-  { name: "Moss Sweater", price: "79 €", category: "Sweater", image: sweaterImg, tags: ["Damen"] },
+  { name: "Moss Sweater Frauen", price: "79 €", category: "Sweater", image: sweaterImg, tags: ["Damen", "Sweater"] },
+  { name: "Cable Knit Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen1Img, tags: ["Damen", "Sweater"] },
+  { name: "Tracht Sweater Frauen", price: "99 €", category: "Sweater", image: sweaterWomen2Img, tags: ["Damen", "Sweater"] },
+  { name: "Forest Sweater Frauen", price: "89 €", category: "Sweater", image: sweaterWomen3Img, tags: ["Damen", "Sweater"] },
+  { name: "Cable Knit Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen1Img, tags: ["Herren", "Sweater"] },
+  { name: "Mountain Sweater Herren", price: "89 €", category: "Sweater", image: sweaterMen2Img, tags: ["Herren", "Sweater"] },
 ];
 
 const ProductSection = () => {
