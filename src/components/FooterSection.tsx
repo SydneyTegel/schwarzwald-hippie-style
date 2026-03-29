@@ -17,6 +17,9 @@ const FooterSection = () => {
       return;
     }
     setSubscribed(true);
+    const existing = JSON.parse(localStorage.getItem("newsletter-emails") || "[]");
+    if (!existing.includes(email.trim())) existing.push(email.trim());
+    localStorage.setItem("newsletter-emails", JSON.stringify(existing));
     localStorage.setItem("newsletter-subscribed", "true");
     toast.success(t("newsletter.successToast"));
   };
